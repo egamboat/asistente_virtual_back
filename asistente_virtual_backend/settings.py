@@ -22,7 +22,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env.local'))
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-tdp&vw#7dok1$_v3=b%@e7q_w@y(7z2^m=9+1segay$!akah4l'
+# SECRET_KEY ='django-insecure-tdp&vw#7dok1$_v3=b%@e7q_w@y(7z2^m=9+1segay$!akah4l'
 SECRET_KEY= os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -36,6 +36,7 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -135,7 +136,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -168,3 +169,33 @@ SIMPLE_JWT = {
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+JAZZMIN_SETTINGS = {
+    "site_title": "Asistente Nomi Admin",
+    "site_header": "Asistente Nomi",
+    "site_brand": "Asistente Nomi",
+    "site_logo": "img/mic_white.png",  # Ruta estática
+    "login_logo": "img/logo_negro.png",  # Imagen en el login
+    "login_logo_dark": "img/logo_negro.png",  # Imagen en modo oscuro
+    "site_logo_classes": "img-circle",
+    "welcome_sign": "Bienvenido al Admin de Nomi",
+    "copyright": "Asistente Nomi",
+    "custom_css": "css/custom_admin.css",
+    "icons": {
+        # Íconos para los modelos de tu app "asistente"
+        "asistente.agenda": "fas fa-calendar-alt",   # Ícono de calendario
+        "asistente.evento": "fas fa-calendar-check", # Ícono de evento
+        "asistente.modalidad": "fas fa-cogs",        # Ícono de configuración
+        "asistente.tipoevento": "fas fa-tags",       # Ícono de etiquetas
+        # Íconos para modelos de autenticación
+        "auth.user": "fas fa-user",                  # Ícono de usuario
+        "auth.group": "fas fa-users",                # Ícono de grupo
+    },
+}
+JAZZMIN_UI_TWEAKS = {
+    "theme": "flatly",
+}
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
