@@ -73,3 +73,22 @@ class DeleteAccountView(APIView):
 
         except Exception as e:
             return Response({'error': f'Error al eliminar la cuenta: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+from .models import SolicitudAyuda
+from .serializers import SolicitudAyudaSerializer
+
+class SolicitudAyudaView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serializer = SolicitudAyudaSerializer(data=request.data)
+        if serializer.is_valid():
+            # Recuperar el usuario autenticado desde el token
+            usuario = request.user
+            solicitud = SolicitudAyuda.objects.create(
+                usuario=usuario,
+                correo=serializer.validated_data['correo'],
+                texto=serializer.validated_data['texto']
+            )
+            return Response({"message": "Solicitud creada con éxito"}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
