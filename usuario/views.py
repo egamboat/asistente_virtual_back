@@ -1,6 +1,7 @@
 # views.py
 import os
 
+from django.http import HttpResponseRedirect
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -92,3 +93,8 @@ class SolicitudAyudaView(APIView):
             )
             return Response({"message": "Solicitud creada con éxito"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+def home(request):
+    return HttpResponseRedirect("https://nomiassistant.netlify.app")
