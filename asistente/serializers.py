@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Evento
 
 class EventoSerializer(serializers.ModelSerializer):
-    # Campo adicional para mostrar la descripción de la modalidad
+
     modalidad_descripcion = serializers.CharField(source='modalidad.descripcion', read_only=True)
 
     class Meta:

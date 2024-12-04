@@ -181,7 +181,7 @@ JAZZMIN_SETTINGS = {
     "login_logo": "img/logo_negro.png",  # Imagen en el login
     "login_logo_dark": "img/logo_negro.png",  # Imagen en modo oscuro
     "site_logo_classes": "img-circle",
-    "welcome_sign": "Bienvenido al Admin de Nomi",
+    "welcome_sign": "Bienvenido al Administrador de Nomi",
     "copyright": "Asistente Nomi",
     "custom_css": "css/custom_admin.css",
     "icons": {

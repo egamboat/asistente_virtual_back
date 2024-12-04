@@ -31,12 +31,13 @@ class Modalidad(models.Model):
 class Evento(models.Model):
     id = models.AutoField(primary_key=True)
     agenda = models.ForeignKey(Agenda, on_delete=models.CASCADE, related_name="eventos")
+    titulo = models.CharField(max_length=150, default='Sin título')
     tipo_evento = models.ForeignKey(TipoEvento, on_delete=models.CASCADE, related_name="eventos")
     modalidad = models.ForeignKey(Modalidad, on_delete=models.CASCADE, related_name="eventos")
     descripcion = models.CharField(max_length=200)
     fecha_inicio = models.DateTimeField()
     fecha_fin = models.DateTimeField(null=True, blank=True)
-    # google_event_id = models.CharField(max_length=255, null=True, blank=True, unique=True)  # Para identificar eventos de Google
+    google_event_id = models.CharField(max_length=100, null=True, blank=True, unique=True)  # Id de eventos de Google
 
     def __str__(self):
         return self.descripcion
